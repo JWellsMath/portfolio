@@ -1,0 +1,193 @@
+\documentclass{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%% BEGIN PREAMBLE %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+\usepackage{cleveref}
+\usepackage{lipsum}  %just used to generate lorem ipsum text
+
+%%%%%%%%%%%%%%%%% CUSTOM COLORS %%%%%%%%%%%%%%%%%%  
+%% colorblind friendly pallet using VT colors
+\definecolor{cbred}{HTML}{861F41} %VT color
+\definecolor{cborange}{HTML}{E87722} %VT color
+\definecolor{cbyellow}{HTML}{F7EA48} %VT color
+\definecolor{cbgreen}{HTML}{1B7D32} %not VT color
+\definecolor{cbblue}{HTML}{003C71} %VT color
+\definecolor{cbgray}{HTML}{D7D2CB} %VT color
+
+%%%%%%%%%%%%%%%%% THEOREM STYLES %%%%%%%%%%%%%%%%%  
+%% fancy using tcolorbox
+\newtcbtheorem[number within=section]{thm}{Theorem}%
+{breakable,enhanced,colback=cbblue!5!white,colframe=cbblue!50!black,fonttitle=\bfseries,label type=theorem}{thm}
+\crefname{theorem}{Theorem}{Theorems}
+\newtcbtheorem[number within=subsection, use counter from =thm]{prop}{Proposition}%
+{breakable,enhanced,colback=cbblue!5!white,colframe=cbblue!50!black,fonttitle=\bfseries,label type=proposition}{thm}
+\crefname{proposition}{Proposition}{Propositions}
+\newtcbtheorem[number within=subsection, use counter from =thm]{lem}{Lemma}%
+{breakable,enhanced,colback=cbblue!5!white,colframe=cbblue!50!black,fonttitle=\bfseries,label type=lemma}{thm}
+\crefname{lemma}{Lemma}{Lemmas}
+\newtcbtheorem[number within=subsection, use counter from =thm]{cor}{Corollary}%
+{breakable,enhanced,colback=cbblue!5!white,colframe=cbblue!50!black,fonttitle=\bfseries,label type=corollary}{thm}
+\crefname{corollary}{Corollary}{Corollaries}
+\newtcbtheorem[number within=subsection, use counter from =thm]{defn}{Definition}%
+{breakable,enhanced,colback=cbgreen!5!white,colframe=cbgreen!50!black,fonttitle=\bfseries,label type=definition}{defn}
+\crefname{definition}{Definition}{Definitions}
+\newtcbtheorem[number within=subsection, use counter from =thm]{notdefn}{Notation}%
+{breakable,enhanced,colback=cbgreen!5!white,colframe=cbgreen!50!black,fonttitle=\bfseries,label type=definition}{notdefn}
+\crefname{definition}{Notation}{Notation}
+\newtcbtheorem[number within=subsection, use counter from =thm]{ex}{Example}%
+{breakable,bicolor,coltitle=black,colback=cborange!25!white,colbacklower=white,colframe=cborange,fonttitle=\bfseries,label type=example}{ex}
+\crefname{example}{Example}{Examples}
+\newtcbtheorem[number within=subsection, use counter from =thm]{exc}{Exercise}%
+{breakable,enhanced,colback=cbred!5!white,colframe=cbred!50!black,fonttitle=\bfseries,label type=exercise}{exc}
+\crefname{exercise}{Exercise}{Exercises}
+\newtcbtheorem[number within=subsection, use counter from =thm]{alg}{Algorithm}%
+{breakable,enhanced,colback=gray!5!white,colframe=gray!50!black,fonttitle=\bfseries,label type=algorithm}{alg}
+\crefname{algorithm}{Algorithm}{Algorithms}
+%% fancy proof
+\tcolorboxenvironment{proof}{% modifies `proof' from `amsthm'
+blanker,breakable,left=5mm,before skip=10pt,after skip=10pt,
+borderline west={1mm}{0pt}{cbblue!50!black}}
+%% unnumbered normal theorem style
+\newtheorem*{claim}{Claim}
+%% unnumbered conjectures and questions 
+\theoremstyle{definition}
+\newtheorem*{conj}{Conjecture}
+\newtheorem*{ques}{Question}
+%% remarks, facts, italics (no bold) titles
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+\newtheorem*{fact}{Fact}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%% END PREAMBLE %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+\title{Notes Layout}
+\author{Joe Wells}
+\date{April 2024}
+
+\begin{document}
+\raggedright
+
+\frontmatter
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\chapter{Preface}
+
+\lipsum[1-2]
+
+\newpage
+
+\mainmatter
+
+\chapter{chapter title}
+
+You can easily link theorems internally.
+\begin{itemize}
+\item \Cref{thm:fund-thm-of-thms}
+\item \Cref{thm:shorthand-name-for-prop}
+\item \Cref{thm:helper}
+\item \Cref{thm:totes-obvs}
+\item \Cref{defn:words-to-live-by}
+\item \Cref{ex:importante}
+\item \Cref{exc:practice-practice}
+\end{itemize}
+
+\section{section title}
+
+\begin{thm}{Fundamental Theorem of Theorems}{fund-thm-of-thms}
+  \lipsum[1-1]
+\end{thm}
+
+\begin{proof}
+  \lipsum[2-3]
+\end{proof}
+
+\begin{prop}{An interesting result}{shorthand-name-for-prop}
+  \lipsum[4-4]
+\end{prop}
+
+\begin{lem}{This Helps Prove Theorems}{helper}
+  \lipsum[5-5]
+\end{lem}
+
+\begin{cor}{Obviously}{totes-obvs}
+  \lipsum[6-6]
+\end{cor}
+
+\subsection{subsection title}
+
+\lipsum[7-7]
+
+\begin{defn}{Important Term}{words-to-live-by}
+  \lipsum[8-8]
+\end{defn}
+
+\begin{defn*}{Less Important Term} %asterisk removes numbering of definition
+  \lipsum[8-8]
+\end{defn*}
+
+\begin{ex}{Important Example}{importante}
+  \lipsum[9-9]
+  \tcblower
+  \lipsum[10-10]
+\end{ex}
+
+\begin{exc}{Now you}{practice-practice}
+  \lipsum[11-11]
+\end{exc}
+
+\section{next section title}
+
+\lipsum[12-12]
+
+\begin{claim}
+  \lipsum[13-13]
+\end{claim}
+
+\begin{conj}
+  \lipsum[14-14]
+\end{conj}
+
+\begin{ques}
+  \lipsum[15-15]
+\end{ques}
+
+\begin{rmk}
+  \lipsum[16-16]
+\end{rmk}
+
+\begin{fact}
+  \lipsum[17-17]
+\end{fact}
+
+\chapter{next chapter title}
+
+\lipsum[18-18]
+
+\section{next section title}
+
+\lipsum[19-19]
+
+\section{next subsection title}
+
+\lipsum[20-20]
+
+\end{document}
