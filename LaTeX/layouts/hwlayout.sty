@@ -1,0 +1,107 @@
+% this package is for use in MATH 2114 at Virginia Tech
+% 
+% (c) VT Math Department
+%
+%% This program can be redistributed and/or modified under the terms
+%% of the LaTeX Project Public License Distributed from CTAN archives
+%% in directory macros/latex/base/lppl.txt.
+% 
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{vtmathexam}
+  [2024/02/08 v0.01 LaTeX package for my own purpose]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{bm}
+\usepackage{calc}
+\usepackage{capt-of}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[top=0.75in,bottom=0.75in,left=0.75in,right=0.75in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{nicematrix}
+\usepackage{pdfpages}
+\usepackage{pgfplots}
+%\usepackage{sagetex}
+\usepackage{subcaption}
+\usepackage{soul}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{cleveref} %listed out of order because of how it plays with hyperref
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% LIBRARIES %%%%%%%%%%%%%%%%%%
+%pgfplots
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+%tikz
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+%tcolorbox
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% CUSTOM SOLUTIONS STYLE %%%%%%%%%%%%
+\newbool{thesolution}
+\boolfalse{thesolution}
+\NewDocumentCommand{\printsolution}{}{\booltrue{thesolution}}
+\NewDocumentEnvironment{solution}{+b}{\par\noindent\ignorespaces%
+  \ifbool{thesolution}{%
+    \vspace{0.25em}\textcolor{blue}{\textbf{\textsc{Solution.}} #1}
+  }{}
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% CUSTOM HEADER/FOOTER STYLE %%%%%%%%%%
+\pagestyle{fancy}
+\lhead{\textsc{Math \classnum{} (\profname{})}}
+\chead{\textsc{Homework} \hwnum{}}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\headrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% CUSTOM ASSIGNMENT INFO %%%%%%%%%%%%
+\def\assignmentinfo{
+  \thispagestyle{empty}
+  \vspace*{-0.5in}
+  \begin{tcolorbox}[colback=white,enhanced]
+    \begin{tabular}{p{0.46\linewidth} p{0.1\linewidth} p{0.36\textwidth}}
+      \textsc{Math \classnum{} Homework \hwnum{}} & & \\
+      & \textsc{Name}: & \ifbool{thesolution}{\multicolumn{1}{c}{\textcolor{blue}{\textbf{\textsc{Solutions}}}}}{} \\
+      \cline{3-3}
+      \textsc{Due Date}: \duedate{} & & \\
+      & & \\
+      \multicolumn{3}{l}{\textsc{Honor Code}: I neither gave nor received unauthorized help on this assignment.} \\
+    \end{tabular}
+    \tcblower
+    \textsc{Instructions:} Answer the following questions, showing \textit{all} of your work and writing neatly. This assignment is due to Canvas by 11:59\textsc{pm} on the date above. Group work is allowed and encouraged, but the final write-up must be your own. By submitting this assignment for a grade, you are agreeing to abide by the \textsc{Honor Code} above.
+  \end{tcolorbox}
+}
+
+
+\endinput
+
+%%
+%% End of file `hwlayout.sty'.
