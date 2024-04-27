@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts,amsmath,amsthm,amssymb}
+\usepackage{sagetex}
+
+\begin{document}
+
+%The following creates a matrix B which is in SL(3,Z) by performing elementary row operations to the identity matrix.
+\begin{sagesilent}
+  latex.matrix_delimiters('[', ']');
+  latex.matrix_column_alignment('c');
+  A=identity_matrix(3);
+  A.add_multiple_of_row(0,1,randint(2,4));
+  A.add_multiple_of_row(1,2,randint(-3,-1));
+  A.add_multiple_of_row(2,0,randint(1,2));
+\end{sagesilent}
+
+\textbf{Problem 1.} Invert the matrix $$ A = \sage{A}.$$
+
+\textbf{Solution 1.} $$A^{-1} = \sage{A.inverse()}$$
+
+\dotfill
+
+%The following creates a matrix B which is in SL(3,Z) by performing elementary row operations to the identity matrix.
+\begin{sagesilent}
+  latex.matrix_delimiters('[', ']');
+  latex.matrix_column_alignment('c');
+  B=identity_matrix(3);
+  B.add_multiple_of_row(0,1,randint(2,4));
+  B.add_multiple_of_row(1,2,randint(-3,-1));
+  B.add_multiple_of_row(2,0,randint(1,2));
+\end{sagesilent}
+
+\textbf{Problem 2.} Invert the matrix $$B = \sage{B}.$$
+
+\textbf{Solution 2.} $$B^{-1} = \sage{B.inverse()}$$
+
+\dotfill
+
+%The following creates a matrix C which is in SL(3,Z) by performing elementary row operations to the identity matrix.
+\begin{sagesilent}
+  latex.matrix_delimiters('[', ']');
+  latex.matrix_column_alignment('c');
+  C=identity_matrix(3);
+  C.add_multiple_of_row(0,1,randint(2,4));
+  C.add_multiple_of_row(1,2,randint(-3,-1));
+  C.add_multiple_of_row(2,0,randint(1,2));
+\end{sagesilent}
+
+\textbf{Problem 3.} Invert the matrix $$C = \sage{C}.$$
+
+\textbf{Solution 3.} $$C^{-1} = \sage{C.inverse()}$$
+
+
+\end{document}
